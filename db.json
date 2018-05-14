@@ -1,0 +1,100 @@
+{
+  "editables": [
+    {
+      "id": 1,
+      "page": "home",
+      "key": "foo",
+      "name": "foo",
+      "value": "hello, world"
+    },
+    {
+      "id": 2,
+      "page": "home",
+      "key": "foo",
+      "name": "bar",
+      "value": "hiya"
+    },
+    {
+      "id": 3,
+      "page": "home",
+      "key": "sections.one.1",
+      "name": "foo",
+      "value": "hmmm"
+    },
+    {
+      "id": 4,
+      "page": "home",
+      "key": "sections.one.0",
+      "name": "foo",
+      "value": "QQQQWW"
+    },
+    {
+      "id": 5,
+      "page": "home",
+      "key": "",
+      "name": "test",
+      "value": "testing123456"
+    },
+    {
+      "id": 6,
+      "page": "home",
+      "key": "list.item.0",
+      "name": "text",
+      "value": "wat"
+    },
+    {
+      "id": 7,
+      "page": "home",
+      "key": "",
+      "name": "wat",
+      "value": "qwert"
+    },
+    {
+      "value": "hello, world",
+      "id": 8
+    }
+  ],
+  "variants": [
+    {
+      "id": 1,
+      "page": "home",
+      "key": "sections",
+      "name": "one"
+    },
+    {
+      "id": 2,
+      "page": "home",
+      "key": "sections",
+      "name": "one"
+    },
+    {
+      "id": 3,
+      "page": "home",
+      "key": "sections",
+      "name": "two"
+    },
+    {
+      "id": 4,
+      "page": "home",
+      "key": "sections",
+      "name": "two"
+    },
+    {
+      "id": 5,
+      "page": "home",
+      "key": "list",
+      "name": "item"
+    }
+  ],
+  "props": [
+    {
+      "id": 1,
+      "page": "home",
+      "key": "",
+      "name": "test-props",
+      "value": {
+        "color": "#00f"
+      }
+    }
+  ]
+}
