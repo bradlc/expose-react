@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import logo from './logo.svg'
+import tinycolor from 'tinycolor2'
 // import Repeatable from './Repeatable'
 import './App.css'
 import Page from './Page'
@@ -19,6 +20,8 @@ import { Text, TextColor, TextText, List } from './Sections'
 import Props from './Props'
 import Admin from './Admin'
 
+import Doughnut from './Doughnut'
+
 let loaded = false
 // let pages = {}
 
@@ -32,20 +35,55 @@ class Home extends Component {
           <Props
             name="test-props"
             props={{
-              color: {
+              backgroundColor: {
                 type: 'color',
-                colors: ['#f00', '#0f0', '#00f'],
-                default: '#f00'
+                colors: ['#fff', '#f4f4f4', '#302741'],
+                default: '#fff'
               },
-              showText: {
+              showHeading: {
                 type: 'boolean',
-                default: false
+                default: true
               }
             }}
           >
-            {({ color, showText }) => (
-              <div style={{ height: 100, backgroundColor: color }}>
-                {showText && 'hiya'}
+            {({ backgroundColor, showHeading }) => (
+              <div
+                className="flex flex-col items-center"
+                style={{
+                  padding: '100px 0',
+                  backgroundColor,
+                  color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'
+                }}
+              >
+                {showHeading && (
+                  <h2 className="mb-4">
+                    <Editable name="fooheading" initial="Hello, world" />
+                  </h2>
+                )}
+                <Props
+                  name="video-props"
+                  props={{
+                    id: {
+                      type: 'text',
+                      title: 'YouTube ID',
+                      default: 'w_MSFkZHNi4',
+                      validator(val) {
+                        return /[a-zA-Z0-9_-]{11}/.test(val)
+                      }
+                    }
+                  }}
+                >
+                  {({ id }) => (
+                    <iframe
+                      width="560"
+                      height="315"
+                      src={`https://www.youtube.com/embed/${id}`}
+                      frameBorder="0"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                    />
+                  )}
+                </Props>
               </div>
             )}
           </Props>
@@ -64,10 +102,14 @@ class Home extends Component {
             }}
           >
             {({ layout }) => (
-              <div class="flex" style={{ height: 200 }}>
-                {Array.from({ length: parseInt(layout, 10) }).map(x => (
-                  <div class="flex-auto">hello</div>
-                ))}
+              <div style={{ padding: '100px 0' }}>
+                <div className="mx-auto flex" style={{ maxWidth: 1280 }}>
+                  {Array.from({ length: parseInt(layout, 10) }).map((x, i) => (
+                    <div className="flex-auto" key={i}>
+                      hello
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </Props>
@@ -89,9 +131,9 @@ class Home extends Component {
             }}
           >
             {({ first, second, third }) => (
-              <div class="p-8" style={{ height: 200 }}>
+              <div className="p-8" style={{ height: 200 }}>
                 <div
-                  class="relative"
+                  className="relative"
                   style={{
                     background: 'tomato',
                     height: 20,
@@ -99,14 +141,14 @@ class Home extends Component {
                   }}
                 >
                   <span
-                    class="absolute leading-none ml-3"
+                    className="absolute leading-none ml-3"
                     style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
                   >
                     {first}
                   </span>
                 </div>
                 <div
-                  class="relative mt-3"
+                  className="relative mt-3"
                   style={{
                     background: 'tomato',
                     height: 20,
@@ -114,14 +156,14 @@ class Home extends Component {
                   }}
                 >
                   <span
-                    class="absolute leading-none ml-3"
+                    className="absolute leading-none ml-3"
                     style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
                   >
                     {second}
                   </span>
                 </div>
                 <div
-                  class="relative mt-3"
+                  className="relative mt-3"
                   style={{
                     background: 'tomato',
                     height: 20,
@@ -129,7 +171,7 @@ class Home extends Component {
                   }}
                 >
                   <span
-                    class="absolute leading-none ml-3"
+                    className="absolute leading-none ml-3"
                     style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
                   >
                     {third}
@@ -143,15 +185,17 @@ class Home extends Component {
             props={{
               numbers: {
                 type: 'number[]',
-                default: [10, 40, 80]
+                default: [10, 40, 80],
+                add: 'Add number'
               }
             }}
           >
             {({ numbers }) => (
-              <div class="p-8">
-                {numbers.map(number => (
+              <div className="p-8">
+                {numbers.map((number, i) => (
                   <div
-                    class="relative mb-3"
+                    key={i}
+                    className="relative mb-3"
                     style={{
                       background: 'tomato',
                       height: 20,
@@ -159,7 +203,7 @@ class Home extends Component {
                     }}
                   >
                     <span
-                      class="absolute leading-none ml-3"
+                      className="absolute leading-none ml-3"
                       style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
                     >
                       {number}
@@ -169,8 +213,16 @@ class Home extends Component {
               </div>
             )}
           </Props>
-          <div class="flex flex-wrap" style={{ padding: '100px 0' }}>
-            <Repeater name="blocks">
+          <div
+            className="flex flex-wrap mx-auto -mx-8"
+            style={{ maxWidth: 1280, padding: '100px 0' }}
+          >
+            <Repeater
+              name="blocks"
+              placeholder={button => (
+                <div class="w-1/3 px-8 mt-8">{button}</div>
+              )}
+            >
               <Variant
                 name="block"
                 render={() => (
@@ -179,21 +231,57 @@ class Home extends Component {
                     props={{
                       icon: {
                         type: 'icon',
-                        icons: [
+                        options: [
                           <svg width="24" height="24" viewBox="0 0 24 24">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>,
+                          <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                           </svg>
-                        ]
+                        ],
+                        default: 0
                       }
                     }}
                   >
                     {({ icon }) => {
-                      return <div class="w-1/3">{icon}</div>
+                      return (
+                        <div className="w-1/3 px-8 mt-8">
+                          {icon}
+                          <p class="leading-normal">
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book.
+                          </p>
+                        </div>
+                      )
                     }}
                   </Props>
                 )}
               />
             </Repeater>
+          </div>
+          <div
+            className="flex items-center justify-center"
+            style={{ background: '#302741', padding: '100px 0' }}
+          >
+            <Props
+              name="donut"
+              props={{
+                values: {
+                  type: 'number[]',
+                  add: 'Add value',
+                  default: [20, 50, 40]
+                }
+              }}
+            >
+              {({ values }) => (
+                <div style={{ width: 300 }}>
+                  <Doughnut values={values} />
+                </div>
+              )}
+            </Props>
           </div>
           <Repeater name="foobar">
             <Variant name="text" component={Text} />

@@ -746,6 +746,10 @@ table tbody tr:hover td:not(:first-child) {
   grid-template-columns: 1fr 1fr;
 }
 
+:checked + .checked\:bg-purple-dark-10 {
+  background-color: rgba(69, 63, 86, .1);
+}
+
 .list-reset {
   list-style: none;
   padding: 0;
@@ -811,6 +815,10 @@ table tbody tr:hover td:not(:first-child) {
   background-color: #453f56;
 }
 
+.bg-purple-dark-10 {
+  background-color: rgba(69, 63, 86, .1);
+}
+
 .hover\:bg-inherit:hover {
   background-color: inherit;
 }
@@ -855,6 +863,10 @@ table tbody tr:hover td:not(:first-child) {
   background-color: #453f56;
 }
 
+.hover\:bg-purple-dark-10:hover {
+  background-color: rgba(69, 63, 86, .1);
+}
+
 .focus\:bg-inherit:focus {
   background-color: inherit;
 }
@@ -897,6 +909,10 @@ table tbody tr:hover td:not(:first-child) {
 
 .focus\:bg-purple-dark:focus {
   background-color: #453f56;
+}
+
+.focus\:bg-purple-dark-10:focus {
+  background-color: rgba(69, 63, 86, .1);
 }
 
 .bg-bottom {
@@ -1007,6 +1023,10 @@ table tbody tr:hover td:not(:first-child) {
   border-color: #453f56;
 }
 
+.border-purple-dark-10 {
+  border-color: rgba(69, 63, 86, .1);
+}
+
 .hover\:border-inherit:hover {
   border-color: inherit;
 }
@@ -1049,6 +1069,10 @@ table tbody tr:hover td:not(:first-child) {
 
 .hover\:border-purple-dark:hover {
   border-color: #453f56;
+}
+
+.hover\:border-purple-dark-10:hover {
+  border-color: rgba(69, 63, 86, .1);
 }
 
 .rounded-none {
@@ -1635,6 +1659,10 @@ table tbody tr:hover td:not(:first-child) {
 
 .h-36 {
   height: 36px;
+}
+
+.h-48 {
+  height: 48px;
 }
 
 .h-96 {
@@ -2865,6 +2893,10 @@ table tbody tr:hover td:not(:first-child) {
   color: #453f56;
 }
 
+.text-purple-dark-10 {
+  color: rgba(69, 63, 86, .1);
+}
+
 .hover\:text-inherit:hover {
   color: inherit;
 }
@@ -2907,6 +2939,10 @@ table tbody tr:hover td:not(:first-child) {
 
 .hover\:text-purple-dark:hover {
   color: #453f56;
+}
+
+.hover\:text-purple-dark-10:hover {
+  color: rgba(69, 63, 86, .1);
 }
 
 .text-sm {
@@ -3449,6 +3485,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .sm\:bg-purple-dark-10 {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .sm\:hover\:bg-inherit:hover {
     background-color: inherit;
   }
@@ -3493,6 +3533,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .sm\:hover\:bg-purple-dark-10:hover {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .sm\:focus\:bg-inherit:focus {
     background-color: inherit;
   }
@@ -3535,6 +3579,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .sm\:focus\:bg-purple-dark:focus {
     background-color: #453f56;
+  }
+
+  .sm\:focus\:bg-purple-dark-10:focus {
+    background-color: rgba(69, 63, 86, .1);
   }
 
   .sm\:bg-bottom {
@@ -3645,6 +3693,10 @@ table tbody tr:hover td:not(:first-child) {
     border-color: #453f56;
   }
 
+  .sm\:border-purple-dark-10 {
+    border-color: rgba(69, 63, 86, .1);
+  }
+
   .sm\:hover\:border-inherit:hover {
     border-color: inherit;
   }
@@ -3687,6 +3739,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .sm\:hover\:border-purple-dark:hover {
     border-color: #453f56;
+  }
+
+  .sm\:hover\:border-purple-dark-10:hover {
+    border-color: rgba(69, 63, 86, .1);
   }
 
   .sm\:rounded-none {
@@ -4273,6 +4329,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .sm\:h-36 {
     height: 36px;
+  }
+
+  .sm\:h-48 {
+    height: 48px;
   }
 
   .sm\:h-96 {
@@ -5495,6 +5555,10 @@ table tbody tr:hover td:not(:first-child) {
     color: #453f56;
   }
 
+  .sm\:text-purple-dark-10 {
+    color: rgba(69, 63, 86, .1);
+  }
+
   .sm\:hover\:text-inherit:hover {
     color: inherit;
   }
@@ -5537,6 +5601,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .sm\:hover\:text-purple-dark:hover {
     color: #453f56;
+  }
+
+  .sm\:hover\:text-purple-dark-10:hover {
+    color: rgba(69, 63, 86, .1);
   }
 
   .sm\:text-sm {
@@ -6072,6 +6140,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .md\:bg-purple-dark-10 {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .md\:hover\:bg-inherit:hover {
     background-color: inherit;
   }
@@ -6116,6 +6188,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .md\:hover\:bg-purple-dark-10:hover {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .md\:focus\:bg-inherit:focus {
     background-color: inherit;
   }
@@ -6158,6 +6234,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .md\:focus\:bg-purple-dark:focus {
     background-color: #453f56;
+  }
+
+  .md\:focus\:bg-purple-dark-10:focus {
+    background-color: rgba(69, 63, 86, .1);
   }
 
   .md\:bg-bottom {
@@ -6268,6 +6348,10 @@ table tbody tr:hover td:not(:first-child) {
     border-color: #453f56;
   }
 
+  .md\:border-purple-dark-10 {
+    border-color: rgba(69, 63, 86, .1);
+  }
+
   .md\:hover\:border-inherit:hover {
     border-color: inherit;
   }
@@ -6310,6 +6394,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .md\:hover\:border-purple-dark:hover {
     border-color: #453f56;
+  }
+
+  .md\:hover\:border-purple-dark-10:hover {
+    border-color: rgba(69, 63, 86, .1);
   }
 
   .md\:rounded-none {
@@ -6896,6 +6984,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .md\:h-36 {
     height: 36px;
+  }
+
+  .md\:h-48 {
+    height: 48px;
   }
 
   .md\:h-96 {
@@ -8118,6 +8210,10 @@ table tbody tr:hover td:not(:first-child) {
     color: #453f56;
   }
 
+  .md\:text-purple-dark-10 {
+    color: rgba(69, 63, 86, .1);
+  }
+
   .md\:hover\:text-inherit:hover {
     color: inherit;
   }
@@ -8160,6 +8256,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .md\:hover\:text-purple-dark:hover {
     color: #453f56;
+  }
+
+  .md\:hover\:text-purple-dark-10:hover {
+    color: rgba(69, 63, 86, .1);
   }
 
   .md\:text-sm {
@@ -8695,6 +8795,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .lg\:bg-purple-dark-10 {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .lg\:hover\:bg-inherit:hover {
     background-color: inherit;
   }
@@ -8739,6 +8843,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .lg\:hover\:bg-purple-dark-10:hover {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .lg\:focus\:bg-inherit:focus {
     background-color: inherit;
   }
@@ -8781,6 +8889,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .lg\:focus\:bg-purple-dark:focus {
     background-color: #453f56;
+  }
+
+  .lg\:focus\:bg-purple-dark-10:focus {
+    background-color: rgba(69, 63, 86, .1);
   }
 
   .lg\:bg-bottom {
@@ -8891,6 +9003,10 @@ table tbody tr:hover td:not(:first-child) {
     border-color: #453f56;
   }
 
+  .lg\:border-purple-dark-10 {
+    border-color: rgba(69, 63, 86, .1);
+  }
+
   .lg\:hover\:border-inherit:hover {
     border-color: inherit;
   }
@@ -8933,6 +9049,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .lg\:hover\:border-purple-dark:hover {
     border-color: #453f56;
+  }
+
+  .lg\:hover\:border-purple-dark-10:hover {
+    border-color: rgba(69, 63, 86, .1);
   }
 
   .lg\:rounded-none {
@@ -9519,6 +9639,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .lg\:h-36 {
     height: 36px;
+  }
+
+  .lg\:h-48 {
+    height: 48px;
   }
 
   .lg\:h-96 {
@@ -10741,6 +10865,10 @@ table tbody tr:hover td:not(:first-child) {
     color: #453f56;
   }
 
+  .lg\:text-purple-dark-10 {
+    color: rgba(69, 63, 86, .1);
+  }
+
   .lg\:hover\:text-inherit:hover {
     color: inherit;
   }
@@ -10783,6 +10911,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .lg\:hover\:text-purple-dark:hover {
     color: #453f56;
+  }
+
+  .lg\:hover\:text-purple-dark-10:hover {
+    color: rgba(69, 63, 86, .1);
   }
 
   .lg\:text-sm {
@@ -11318,6 +11450,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .xl\:bg-purple-dark-10 {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .xl\:hover\:bg-inherit:hover {
     background-color: inherit;
   }
@@ -11362,6 +11498,10 @@ table tbody tr:hover td:not(:first-child) {
     background-color: #453f56;
   }
 
+  .xl\:hover\:bg-purple-dark-10:hover {
+    background-color: rgba(69, 63, 86, .1);
+  }
+
   .xl\:focus\:bg-inherit:focus {
     background-color: inherit;
   }
@@ -11404,6 +11544,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .xl\:focus\:bg-purple-dark:focus {
     background-color: #453f56;
+  }
+
+  .xl\:focus\:bg-purple-dark-10:focus {
+    background-color: rgba(69, 63, 86, .1);
   }
 
   .xl\:bg-bottom {
@@ -11514,6 +11658,10 @@ table tbody tr:hover td:not(:first-child) {
     border-color: #453f56;
   }
 
+  .xl\:border-purple-dark-10 {
+    border-color: rgba(69, 63, 86, .1);
+  }
+
   .xl\:hover\:border-inherit:hover {
     border-color: inherit;
   }
@@ -11556,6 +11704,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .xl\:hover\:border-purple-dark:hover {
     border-color: #453f56;
+  }
+
+  .xl\:hover\:border-purple-dark-10:hover {
+    border-color: rgba(69, 63, 86, .1);
   }
 
   .xl\:rounded-none {
@@ -12142,6 +12294,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .xl\:h-36 {
     height: 36px;
+  }
+
+  .xl\:h-48 {
+    height: 48px;
   }
 
   .xl\:h-96 {
@@ -13364,6 +13520,10 @@ table tbody tr:hover td:not(:first-child) {
     color: #453f56;
   }
 
+  .xl\:text-purple-dark-10 {
+    color: rgba(69, 63, 86, .1);
+  }
+
   .xl\:hover\:text-inherit:hover {
     color: inherit;
   }
@@ -13406,6 +13566,10 @@ table tbody tr:hover td:not(:first-child) {
 
   .xl\:hover\:text-purple-dark:hover {
     color: #453f56;
+  }
+
+  .xl\:hover\:text-purple-dark-10:hover {
+    color: rgba(69, 63, 86, .1);
   }
 
   .xl\:text-sm {

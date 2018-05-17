@@ -42,6 +42,7 @@ class Editable extends Component {
       <div
         contentEditable
         suppressContentEditableWarning
+        style={{ outline: 0 }}
         onBlur={event => {
           let id = dlv(
             this.props.e.state.editables2,
