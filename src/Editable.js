@@ -49,7 +49,7 @@ class Editable extends Component {
               this.props.value.key ? this.props.value.key + '.' : ''
             }${this.props.name}.id`
           )
-          window.fetch(`http://localhost:3000/editables/${id}`, {
+          window.fetch(`http://localhost:3002/editables/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ value: event.target.textContent })

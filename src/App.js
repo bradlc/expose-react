@@ -17,6 +17,7 @@ import EditableContainer from './EditableContainer'
 import { Text, TextColor, TextText, List } from './Sections'
 
 import Props from './Props'
+import Admin from './Admin'
 
 let loaded = false
 // let pages = {}
@@ -42,13 +43,165 @@ class Home extends Component {
                 type: 'color',
                 colors: ['#f00', '#0f0', '#00f'],
                 default: '#f00'
+              },
+              showText: {
+                type: 'boolean',
+                default: false
               }
             }}
           >
-            {({ color }) => (
-              <div style={{ height: 100, backgroundColor: color }} />
+            {({ color, showText }) => (
+              <div style={{ height: 100, backgroundColor: color }}>
+                {showText && 'hiya'}
+              </div>
             )}
           </Props>
+          <Props
+            name="test-props-2"
+            props={{
+              layout: {
+                type: 'select',
+                options: [
+                  { value: '1', label: 'One column' },
+                  { value: '2', label: 'Two column' },
+                  { value: '3', label: 'Three column' }
+                ],
+                default: '2'
+              }
+            }}
+          >
+            {({ layout }) => (
+              <div class="flex" style={{ height: 200 }}>
+                {Array.from({ length: parseInt(layout, 10) }).map(x => (
+                  <div class="flex-auto">hello</div>
+                ))}
+              </div>
+            )}
+          </Props>
+          <Props
+            name="test-props-3"
+            props={{
+              first: {
+                type: 'number',
+                default: 10
+              },
+              second: {
+                type: 'number',
+                default: 40
+              },
+              third: {
+                type: 'number',
+                default: 80
+              }
+            }}
+          >
+            {({ first, second, third }) => (
+              <div class="p-8" style={{ height: 200 }}>
+                <div
+                  class="relative"
+                  style={{
+                    background: 'tomato',
+                    height: 20,
+                    width: `${first / Math.max(first, second, third) * 100}%`
+                  }}
+                >
+                  <span
+                    class="absolute leading-none ml-3"
+                    style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
+                  >
+                    {first}
+                  </span>
+                </div>
+                <div
+                  class="relative mt-3"
+                  style={{
+                    background: 'tomato',
+                    height: 20,
+                    width: `${second / Math.max(first, second, third) * 100}%`
+                  }}
+                >
+                  <span
+                    class="absolute leading-none ml-3"
+                    style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
+                  >
+                    {second}
+                  </span>
+                </div>
+                <div
+                  class="relative mt-3"
+                  style={{
+                    background: 'tomato',
+                    height: 20,
+                    width: `${third / Math.max(first, second, third) * 100}%`
+                  }}
+                >
+                  <span
+                    class="absolute leading-none ml-3"
+                    style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
+                  >
+                    {third}
+                  </span>
+                </div>
+              </div>
+            )}
+          </Props>
+          <Props
+            name="test-props-4"
+            props={{
+              numbers: {
+                type: 'number[]',
+                default: [10, 40, 80]
+              }
+            }}
+          >
+            {({ numbers }) => (
+              <div class="p-8">
+                {numbers.map(number => (
+                  <div
+                    class="relative mb-3"
+                    style={{
+                      background: 'tomato',
+                      height: 20,
+                      width: `${number / Math.max(...numbers) * 100}%`
+                    }}
+                  >
+                    <span
+                      class="absolute leading-none ml-3"
+                      style={{ left: '100%', top: '50%', marginTop: '-0.5em' }}
+                    >
+                      {number}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Props>
+          <div class="flex flex-wrap" style={{ padding: '100px 0' }}>
+            <Repeater name="blocks">
+              <Variant
+                name="block"
+                render={() => (
+                  <Props
+                    name="icon"
+                    props={{
+                      icon: {
+                        type: 'icon',
+                        icons: [
+                          <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>
+                        ]
+                      }
+                    }}
+                  >
+                    {({ icon }) => {
+                      return <div class="w-1/3">{icon}</div>
+                    }}
+                  </Props>
+                )}
+              />
+            </Repeater>
+          </div>
           <Repeater name="foobar">
             <Variant name="text" component={Text} />
             <Variant name="color" component={TextColor} />
@@ -111,7 +264,7 @@ class NR extends Component {
 
     window
       .fetch(
-        `http://localhost:3000/editables?page=${encodeURIComponent(
+        `http://localhost:3002/editables?page=${encodeURIComponent(
           this.props.name
         )}`
       )
@@ -125,7 +278,7 @@ class NR extends Component {
 
     window
       .fetch(
-        `http://localhost:3000/variants?page=${encodeURIComponent(
+        `http://localhost:3002/variants?page=${encodeURIComponent(
           this.props.name
         )}`
       )
@@ -138,7 +291,7 @@ class NR extends Component {
 
     window
       .fetch(
-        `http://localhost:3000/props?page=${encodeURIComponent(
+        `http://localhost:3002/props?page=${encodeURIComponent(
           this.props.name
         )}`
       )
@@ -168,7 +321,7 @@ class Wrapper extends Component {
         let p = [
           window
             .fetch(
-              `http://localhost:3000/editables?page=${encodeURIComponent(
+              `http://localhost:3002/editables?page=${encodeURIComponent(
                 this.props.e.state.pages[nextLocation.pathname]
               )}`
             )
@@ -180,7 +333,7 @@ class Wrapper extends Component {
             }),
           window
             .fetch(
-              `http://localhost:3000/variants?page=${encodeURIComponent(
+              `http://localhost:3002/variants?page=${encodeURIComponent(
                 this.props.e.state.pages[nextLocation.pathname]
               )}`
             )
@@ -192,7 +345,7 @@ class Wrapper extends Component {
             }),
           window
             .fetch(
-              `http://localhost:3000/props?page=${encodeURIComponent(
+              `http://localhost:3002/props?page=${encodeURIComponent(
                 this.props.e.state.pages[nextLocation.pathname]
               )}`
             )
@@ -231,12 +384,12 @@ class App extends Component {
           <Subscribe to={[EditableContainer]}>
             {e => (
               <div>
-                <pre style={{ height: '300px', overflow: 'auto' }}>
+                {/* <pre style={{ height: '300px', overflow: 'auto' }}>
                   {JSON.stringify(e.state, null, 2)}
                 </pre>
                 <button onClick={() => e.addEditables({ foo: 'bar' })}>
                   click
-                </button>
+                </button> */}
                 <W e={e}>
                   <NamedRoute
                     exact
@@ -253,6 +406,7 @@ class App extends Component {
                     e={e}
                   />
                 </W>
+                <Route exact path="/admin" component={Admin} />
               </div>
             )}
           </Subscribe>

@@ -24,7 +24,7 @@ class Repeater extends Component {
       : [this.props.children]
 
     return (
-      <div>
+      <React.Fragment>
         {children.map(child => (
           <button
             onClick={() =>
@@ -67,7 +67,7 @@ class Repeater extends Component {
             </EditableContext.Provider>
           )
         })}
-      </div>
+      </React.Fragment>
     )
   }
 }
