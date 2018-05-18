@@ -15,9 +15,7 @@ class Repeater extends Component {
       ].filter(
         x => x.key === this.props.value.key // && x.name === this.props.name
       )
-    } catch (err) {
-      return null
-    }
+    } catch (err) {}
 
     let children = Array.isArray(this.props.children)
       ? this.props.children

@@ -5,6 +5,7 @@ import logo from './logo.svg'
 import tinycolor from 'tinycolor2'
 // import Repeatable from './Repeatable'
 import './App.css'
+import './Extra.css'
 import Page from './Page'
 import Parent from './Parent'
 import Editable from './Editable'
@@ -21,6 +22,7 @@ import Props from './Props'
 import Admin from './Admin'
 
 import Doughnut from './Doughnut'
+import Sortable from 'react-sortablejs'
 
 let loaded = false
 // let pages = {}
@@ -213,7 +215,8 @@ class Home extends Component {
               </div>
             )}
           </Props>
-          <div
+
+          <Sortable
             className="flex flex-wrap mx-auto -mx-8"
             style={{ maxWidth: 1280, padding: '100px 0' }}
           >
@@ -261,7 +264,7 @@ class Home extends Component {
                 )}
               />
             </Repeater>
-          </div>
+          </Sortable>
           <div
             className="flex items-center justify-center"
             style={{ background: '#302741', padding: '100px 0' }}

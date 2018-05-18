@@ -47,7 +47,7 @@ export default class EditableContainer extends Container {
     this.setState(state => ({
       variants: {
         ...state.variants,
-        [page]: [...state.variants[page], variant]
+        [page]: [...(state.variants[page] || {}), variant]
       }
     }))
   }
