@@ -24,6 +24,8 @@ import Admin from './Admin'
 import Doughnut from './Doughnut'
 import Sortable from 'react-sortablejs'
 
+import Carousel from 'nuka-carousel'
+
 let loaded = false
 // let pages = {}
 
@@ -31,9 +33,48 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Link to="/foo">FOO</Link>
         {/* <Parent>{val => <Parent>{value => value}</Parent>}</Parent> */}
         <Page name="home">
+          <Props
+            name="image-test"
+            props={{
+              wrapAround: { type: 'boolean', default: false },
+              autoplay: { type: 'boolean', default: false },
+              interval: { type: 'number', default: 3000 },
+              speed: { type: 'number', default: 1000 },
+              imgs: { title: 'Images', type: 'image[]', default: [] }
+            }}
+          >
+            {({ imgs, wrapAround, autoplay, speed, interval }) => {
+              if (imgs.length === 0) return null
+              if (imgs.length === 1) {
+                return (
+                  <img
+                    src={imgs[0]}
+                    height={500}
+                    style={{ width: '100%', objectFit: 'cover' }}
+                  />
+                )
+              }
+              return (
+                <Carousel
+                  wrapAround={wrapAround}
+                  autoplay={autoplay}
+                  speed={speed}
+                  autoplayInterval={interval}
+                  initialSlideHeight={500}
+                >
+                  {imgs.map(img => (
+                    <img
+                      src={img}
+                      height={500}
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ))}
+                </Carousel>
+              )
+            }}
+          </Props>
           <Props
             name="test-props"
             props={{
@@ -70,7 +111,7 @@ class Home extends Component {
                       title: 'YouTube ID',
                       default: 'w_MSFkZHNi4',
                       validator(val) {
-                        return /[a-zA-Z0-9_-]{11}/.test(val)
+                        return /^[a-zA-Z0-9_-]{11}$/.test(val)
                       }
                     }
                   }}
@@ -139,7 +180,7 @@ class Home extends Component {
                   style={{
                     background: 'tomato',
                     height: 20,
-                    width: `${first / Math.max(first, second, third) * 100}%`
+                    width: `${first / Math.max(first, second, third) * 90}%`
                   }}
                 >
                   <span
@@ -154,7 +195,7 @@ class Home extends Component {
                   style={{
                     background: 'tomato',
                     height: 20,
-                    width: `${second / Math.max(first, second, third) * 100}%`
+                    width: `${second / Math.max(first, second, third) * 90}%`
                   }}
                 >
                   <span
@@ -169,7 +210,7 @@ class Home extends Component {
                   style={{
                     background: 'tomato',
                     height: 20,
-                    width: `${third / Math.max(first, second, third) * 100}%`
+                    width: `${third / Math.max(first, second, third) * 90}%`
                   }}
                 >
                   <span
@@ -201,7 +242,7 @@ class Home extends Component {
                     style={{
                       background: 'tomato',
                       height: 20,
-                      width: `${number / Math.max(...numbers) * 100}%`
+                      width: `${number / Math.max(...numbers) * 90}%`
                     }}
                   >
                     <span
@@ -286,42 +327,6 @@ class Home extends Component {
               )}
             </Props>
           </div>
-          <Repeater name="foobar">
-            <Variant name="text" component={Text} />
-            <Variant name="color" component={TextColor} />
-            <Variant name="text-text" component={TextText} />
-            <Variant name="list" component={List} />
-          </Repeater>
-          {/* <Parent name="foo">
-  <Editable name="bar" />
-</Parent> */}
-          <ul>
-            <Repeater name="list">
-              <Variant
-                name="item"
-                render={() => (
-                  <li>
-                    <Editable name="text" initial="New item" />
-                    <Repeater name="nah">
-                      <Variant name="maybe" render={() => <div>no way</div>} />
-                    </Repeater>
-                  </li>
-                )}
-              />
-            </Repeater>
-          </ul>
-          <Repeater name="sections">
-            <Variant
-              name="one"
-              render={() => (
-                <div>
-                  <Editable name="foo" initial="placeholder" />
-                </div>
-              )}
-            />
-            <Variant name="two" render={() => <div>yo</div>} />
-          </Repeater>
-          <Editable name="test" initial="placeholder" />
         </Page>
       </div>
     )

@@ -340,6 +340,123 @@ class Sidebar extends React.Component {
                       </div>
                     )
                     break
+                  case 'image[]':
+                    return (
+                      <div
+                        className="mb-3"
+                        key={this.props.sidebar.state.key + prop}
+                      >
+                        <h2
+                          className="font-normal mb-2"
+                          style={{ fontSize: 16 }}
+                        >
+                          {this.props.sidebar.state.props[prop].title ||
+                            camelToSentence(prop)}
+                        </h2>
+                        <div className="flex flex-wrap -mt-1 -mx-1 mb-3">
+                          {this.props.sidebar.state.props[prop].value.map(
+                            (src, i, arr) => (
+                              <div className="my-1 px-1 w-1/3">
+                                <input
+                                  type="file"
+                                  className="sr-only"
+                                  id={this.props.sidebar.state.key + prop + i}
+                                  onChange={e => {
+                                    let reader = new FileReader()
+                                    reader.onload = () => {
+                                      let nextValue = arr.map((a, index) => {
+                                        if (i === index) return reader.result
+                                        return a
+                                      })
+                                      this.props.sidebar.setProps(
+                                        this.props.sidebar.state.key,
+                                        {
+                                          ...this.props.sidebar.state.props,
+                                          [prop]: {
+                                            ...this.props.sidebar.state.props[
+                                              prop
+                                            ],
+                                            value: nextValue
+                                          }
+                                        }
+                                      )
+                                      this.props.sidebar.state.callback(
+                                        prop,
+                                        nextValue
+                                      )
+                                    }
+                                    reader.readAsDataURL(e.target.files[0])
+                                  }}
+                                />
+                                <label
+                                  htmlFor={
+                                    this.props.sidebar.state.key + prop + i
+                                  }
+                                  className="block w-full bg-purple-dark rounded overflow-hidden"
+                                >
+                                  <img
+                                    src={src}
+                                    height={50}
+                                    className="block"
+                                    style={{
+                                      width: '100%',
+                                      objectFit: 'cover'
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            )
+                          )}
+                          <div className="my-1 px-1 w-1/3">
+                            <input
+                              type="file"
+                              className="sr-only"
+                              id={this.props.sidebar.state.key + prop + 'new'}
+                              onChange={e => {
+                                let reader = new FileReader()
+                                reader.onload = () => {
+                                  let nextValue = this.props.sidebar.state.props[
+                                    prop
+                                  ].value.concat([reader.result])
+                                  this.props.sidebar.setProps(
+                                    this.props.sidebar.state.key,
+                                    {
+                                      ...this.props.sidebar.state.props,
+                                      [prop]: {
+                                        ...this.props.sidebar.state.props[prop],
+                                        value: nextValue
+                                      }
+                                    }
+                                  )
+                                  this.props.sidebar.state.callback(
+                                    prop,
+                                    nextValue
+                                  )
+                                }
+                                reader.readAsDataURL(e.target.files[0])
+                              }}
+                            />
+                            <label
+                              htmlFor={
+                                this.props.sidebar.state.key + prop + 'new'
+                              }
+                              className="flex w-full items-center justify-center border border-dashed border-purple-dark rounded text-purple-darkest"
+                              style={{ height: 50 }}
+                            >
+                              <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                className="fill-current"
+                              >
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                              </svg>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                    break
                   case 'select':
                     return (
                       <div
